@@ -31,3 +31,6 @@ from bzoinq import bzoinq
 
 def test_answer():
     assert bzoinq.hello() == "Helooo"
+
+def another_test():
+    assert bzoing.say_something_else() == "something else"

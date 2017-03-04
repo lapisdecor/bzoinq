@@ -12,4 +12,4 @@ def say_hello():
 
 def say_something_else():
     """prints something else"""
-    print("something else")
+    return ("something else")
