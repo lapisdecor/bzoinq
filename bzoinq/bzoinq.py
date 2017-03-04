@@ -9,3 +9,7 @@ def hello():
 def say_hello():
     """ Prints Hellooo message """
     print(hello())
+
+def say_something_else():
+    """prints something else"""
+    print("something else")
