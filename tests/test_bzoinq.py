@@ -29,8 +29,6 @@ from bzoinq import bzoinq
 #     # from bs4 import BeautifulSoup
 #     # assert 'GitHub' in BeautifulSoup(response.content).title.string
 
-def test_answer():
-    assert bzoinq.hello() == "Helooo"
-
-def another_test():
-    assert bzoing.say_something_else() == "something else"
+def test_task():
+    a = bzoinq.Task(1, "lalala", datetime.datetime(2017, 10, 1, 10, 10))
+    assert a.id == 1
