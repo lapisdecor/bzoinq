@@ -112,7 +112,7 @@ class Bzoinq():
                 # check the time
                 if current_time >= self.task_list[0].alarm:
                     print(self.task_list[0].alarm)
-                    playit(r"./sound/alarm-clock-elapsed.wav")
+                    playit(r"alarm-clock-elapsed.wav")
                     done_alarm = self.task_list.pop(0)
                     print("alarm is done {}".format(done_alarm))
                     break
