@@ -29,6 +29,7 @@ from bzoinq import bzoinq
 #     # from bs4 import BeautifulSoup
 #     # assert 'GitHub' in BeautifulSoup(response.content).title.string
 
-def test_task():
-    a = bzoinq.Task(1, "lalala", datetime.datetime(2017, 10, 1, 10, 10))
-    assert a.id == 1
+def test_sound():
+    a = bzoinq.Bzoinq()
+    a.create_task()
+    a.monitor()
