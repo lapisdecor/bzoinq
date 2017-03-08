@@ -7,7 +7,7 @@ import datetime
 import pickle
 import os
 from functools import total_ordering
-from playit import playit
+from bzoinq.playit import playit
 import time
 
 
