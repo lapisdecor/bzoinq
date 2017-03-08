@@ -32,5 +32,7 @@ from bzoinq import bzoinq
 def test_sound():
     a = bzoinq.Bzoinq()
     a.create_task()
-    # a.monitor() commented because travis has no default sound output
+    # commented because travis has no default sound output
+    # a.monitor()
+    # test that the first id is 1
     assert a.task_id == 1
