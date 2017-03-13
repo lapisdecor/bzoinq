@@ -50,3 +50,17 @@ def test_monitor():
     b.start()
     time.sleep(5)
     b.stop()
+
+def test_two_tasks():
+    import datetime
+    import time
+    current_time = datetime.datetime.now()
+    time_in_10 = current_time + datetime.timedelta(seconds=10)
+    time_in_5 = current_time + datetime.timedelta(seconds=5)
+    a = bzoinq.Bzoinq()
+    a.create_task("10 seconds task", time_in_10)
+    a.create_task("5 seconds task", time_in_5)
+    b = bzoinq.Monitor(a.get_task_list())
+    b.start()
+    time.sleep(15)
+    b.stop()

@@ -150,9 +150,9 @@ class Monitor():
 # help function
 def to_datetime(sometime):
     """converts Y-M-D 00:00:00 (string) time input to datetime"""
-    sep_index = sometime.find(" ")
-    the_date = sometime[:sep_index]
-    the_time = sometime[sep_index+1:]
-    year, month, day = map(int, the_date.split('-'))
-    hours, minutes, seconds = map(int, the_time.split(':'))
-    return datetime.datetime(year, month, day, hours, minutes, seconds)
+    try:
+        my_datetime = datetime.datetime.strptime(sometime, '%Y-%m-%d %H:%M:%S')
+    except ValueError:
+        print("Incorrect time. Please use Y-M-D 00:00:00 format.")
+        raise ValueError
+    return my_datetime
