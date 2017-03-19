@@ -37,8 +37,6 @@ def test_to_datetime():
 def test_sound_and_task():
     a = bzoinq.Bzoinq()
     a.create_task()
-    # commented because travis has no default sound output
-    # a.monitor()
     # test that the first id is 1
     assert a.task_id == 1
 

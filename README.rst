@@ -30,12 +30,8 @@ This project is currently in experimental development
 Features
 --------
 
-* TODO
+* Plays sounds on a given datetime
 
 Credits
 ---------
-
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+Bzoinq is by Luis Louro and contributers are welcome
