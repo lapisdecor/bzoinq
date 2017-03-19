@@ -9,4 +9,4 @@ Sphinx==1.5.3
 cryptography==1.8.1
 PyYAML==3.12
 pytest==3.0.7
-pyaudio==0.2.10
+pyaudio==0.2.11
