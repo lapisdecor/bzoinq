@@ -65,6 +65,7 @@ class Bzoinq():
     def create_task(self, description="Sample task",
                     alarm=datetime.datetime.now()):
         """Creates a new task"""
+        assert type(alarm) is datetime.datetime
         self.task_id += 1
         # create the task
         new_task = Task(self.task_id, description, alarm)
@@ -74,10 +75,10 @@ class Bzoinq():
         self.task_list = sorted(self.task_list)
         print("new task created")
 
-    def remove_task(self, id):
+    def remove_task(self, id_to_remove):
         """Removes task with given id"""
         for task in self.task_list[:]:
-            if task.id == id:
+            if task.id == id_to_remove:
                 try:
                     self.task_list.remove(task)
                 except:
@@ -98,11 +99,17 @@ class Bzoinq():
             pickle.dump(self.task_list, fp)
         print("Tasks have been saved")
 
-    def change_alarm(self, id):
-        """Changes the alarm time of a task"""
-        # TODO this in practice will create a new task
-        # TODO maybe it should cancel the alarm thread currently running
-        pass
+    def change_alarm(self, id_to_change, new_time):
+        """
+        Changes the alarm time of a task.
+        new_time must be a datetime object
+        """
+        assert type(new_time) is datetime.datetime
+        # time on a task can only be changed if the task still exists
+        for task in self.task_list()[:]:
+            if task.id == id_to_change:
+                task.alarm = new_time
+        print("alarm with id {} changed".format(id_to_change))
 
 
 class Monitorthread(threading.Thread):
@@ -124,11 +131,13 @@ class Monitor():
         self.stopit = True
 
     def start(self):
+        """Starts the monitor thread"""
         t = Monitorthread(target=self.keep_checking)
         t.start()
         print("Monitor thread has started")
 
     def keep_checking(self):
+        """Keeps checking time and sorts the task_list"""
         while True:
             time.sleep(1)
             if self.stopit:
