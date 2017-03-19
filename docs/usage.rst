@@ -4,7 +4,7 @@ Usage
 
 To use bzoinq in a project::
 
-    import bzoinq
+    from bzoinq import bzoinq
     import datetime
 
     # create a bzoinq instance
