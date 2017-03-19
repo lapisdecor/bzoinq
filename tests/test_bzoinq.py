@@ -29,10 +29,38 @@ from bzoinq import bzoinq
 #     # from bs4 import BeautifulSoup
 #     # assert 'GitHub' in BeautifulSoup(response.content).title.string
 
-def test_sound():
+def test_to_datetime():
+    import datetime
+    mytime = "2017-10-1 10:20:00"
+    assert bzoinq.to_datetime(mytime) == datetime.datetime(2017, 10, 1, 10, 20, 0)
+
+def test_sound_and_task():
     a = bzoinq.Bzoinq()
     a.create_task()
     # commented because travis has no default sound output
     # a.monitor()
     # test that the first id is 1
     assert a.task_id == 1
+
+def test_monitor():
+    import time
+    a = bzoinq.Bzoinq()
+    a.create_task()
+    b = bzoinq.Monitor(a.get_task_list())
+    b.start()
+    time.sleep(5)
+    b.stop()
+
+def test_two_tasks():
+    import datetime
+    import time
+    current_time = datetime.datetime.now()
+    time_in_10 = current_time + datetime.timedelta(seconds=10)
+    time_in_5 = current_time + datetime.timedelta(seconds=5)
+    a = bzoinq.Bzoinq()
+    a.create_task("10 seconds task", time_in_10)
+    a.create_task("5 seconds task", time_in_5)
+    b = bzoinq.Monitor(a.get_task_list())
+    b.start()
+    time.sleep(15)
+    b.stop()

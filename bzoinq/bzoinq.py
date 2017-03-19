@@ -9,6 +9,7 @@ import os
 from functools import total_ordering
 from bzoinq.playit import playit
 import time
+import threading
 
 
 @total_ordering
@@ -64,6 +65,7 @@ class Bzoinq():
     def create_task(self, description="Sample task",
                     alarm=datetime.datetime.now()):
         """Creates a new task"""
+        assert type(alarm) is datetime.datetime
         self.task_id += 1
         # create the task
         new_task = Task(self.task_id, description, alarm)
@@ -73,10 +75,10 @@ class Bzoinq():
         self.task_list = sorted(self.task_list)
         print("new task created")
 
-    def remove_task(self, id):
+    def remove_task(self, id_to_remove):
         """Removes task with given id"""
         for task in self.task_list[:]:
-            if task.id == id:
+            if task.id == id_to_remove:
                 try:
                     self.task_list.remove(task)
                 except:
@@ -88,38 +90,78 @@ class Bzoinq():
         self.task_id = 0
         print("All tasks have been cleaned")
 
+    def get_task_list(self):
+        return self.task_list
+
     def save_tasks(self):
         """Saves current tasks to file"""
         with open('outfile.p', 'wb') as fp:
             pickle.dump(self.task_list, fp)
         print("Tasks have been saved")
 
-    def change_alarm(self, id):
-        """Changes the alarm time of a task"""
-        # this in practice creates a new task
-        # it should cancel any alarm thread currently running
-        pass
+    def change_alarm(self, id_to_change, new_time):
+        """
+        Changes the alarm time of a task.
+        new_time must be a datetime object
+        """
+        assert type(new_time) is datetime.datetime
+        # time on a task can only be changed if the task still exists
+        for task in self.task_list()[:]:
+            if task.id == id_to_change:
+                task.alarm = new_time
+        print("alarm with id {} changed".format(id_to_change))
 
-    def monitor(self):
-        # TODO this has to be done in a thread otherwise no task is created
-        stopit = False
+
+class Monitorthread(threading.Thread):
+    def __init__(self, name=None, target=None):
+        super().__init__(name=name, target=target)
+
+    # def run(self):
+    #     pass
+
+
+class Monitor():
+    """Defines a monitor that keeps checking a task list for changes"""
+    def __init__(self, task_list):
+        self.stopit = False
+        self.task_list = task_list
+
+    def stop(self):
+        """stops the monitor thread"""
+        self.stopit = True
+
+    def start(self):
+        """Starts the monitor thread"""
+        t = Monitorthread(target=self.keep_checking)
+        t.start()
+        print("Monitor thread has started")
+
+    def keep_checking(self):
+        """Keeps checking time and sorts the task_list"""
         while True:
             time.sleep(1)
-            if stopit:
-                return
-            current_time = datetime.datetime.now()
+            if self.stopit:
+                break
             if len(self.task_list) > 0:
+                # make sure task_list is sorted
+                self.task_list = sorted(self.task_list)
                 # check the time
+                current_time = datetime.datetime.now()
                 if current_time >= self.task_list[0].alarm:
                     print(self.task_list[0].alarm)
+                    # play the sound
                     playit(r"alarm-clock-elapsed.wav")
+                    # remove current alarm from the task_list
                     done_alarm = self.task_list.pop(0)
                     print("alarm is done {}".format(done_alarm))
-                    break
 
 
 # help function
 def to_datetime(sometime):
-    """converts 00:00:00 (string) time input to datetime"""
-    year, month, day, hours, minutes, seconds = map(int, sometime.split(':'))
-    return datetime.datetime(year, month, day, hours, minutes, seconds)
+    """converts Y-M-D 00:00:00 (string) time input to datetime"""
+    try:
+        my_datetime = datetime.datetime.strptime(sometime, '%Y-%m-%d %H:%M:%S')
+    except ValueError:
+        print("Incorrect time. Please use Y-M-D 00:00:00 format.")
+        raise ValueError
+    return my_datetime
