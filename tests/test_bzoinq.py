@@ -71,4 +71,5 @@ def test_monitor_again():
     a.create_task("Task to test the Monitor")
     time.sleep(3)
     a.create_task("Second task to test the Monitor")
+    time.sleep(3)
     b.stop()
