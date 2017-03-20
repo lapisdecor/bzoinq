@@ -43,8 +43,8 @@ def test_sound_and_task():
 def test_monitor():
     import time
     a = bzoinq.Bzoinq()
-    a.create_task()
-    b = bzoinq.Monitor(a.get_task_list())
+    a.create_task("First task")
+    b = bzoinq.Monitor(a)
     b.start()
     time.sleep(5)
     b.stop()
@@ -58,7 +58,17 @@ def test_two_tasks():
     a = bzoinq.Bzoinq()
     a.create_task("10 seconds task", time_in_10)
     a.create_task("5 seconds task", time_in_5)
-    b = bzoinq.Monitor(a.get_task_list())
+    b = bzoinq.Monitor(a)
     b.start()
     time.sleep(15)
+    b.stop()
+
+def test_monitor_again():
+    import time
+    a = bzoinq.Bzoinq()
+    b = bzoinq.Monitor(a)
+    b.start()
+    a.create_task("Task to test the Monitor")
+    time.sleep(3)
+    a.create_task("Second task to test the Monitor")
     b.stop()

@@ -91,6 +91,7 @@ class Bzoinq():
         print("All tasks have been cleaned")
 
     def get_task_list(self):
+        """Returns the list of tasks"""
         return self.task_list
 
     def save_tasks(self):
@@ -122,9 +123,9 @@ class Monitorthread(threading.Thread):
 
 class Monitor():
     """Defines a monitor that keeps checking a task list for changes"""
-    def __init__(self, task_list):
+    def __init__(self, bzoinq_obj):
         self.stopit = False
-        self.task_list = task_list
+        self.bzoinq_obj = bzoinq_obj
 
     def stop(self):
         """stops the monitor thread"""
@@ -142,18 +143,23 @@ class Monitor():
             time.sleep(1)
             if self.stopit:
                 break
-            if len(self.task_list) > 0:
+            # get current task list
+            task_list = self.bzoinq_obj.get_task_list()
+            if len(task_list) > 0:
                 # make sure task_list is sorted
-                self.task_list = sorted(self.task_list)
+                task_list = sorted(task_list)
                 # check the time
                 current_time = datetime.datetime.now()
-                if current_time >= self.task_list[0].alarm:
-                    print(self.task_list[0].alarm)
+                if current_time >= task_list[0].alarm:
+                    # get task id
+                    current_id = task_list[0].id
+                    current_desc = task_list[0].description
+                    print("executing alarm: {}".format(task_list[0].alarm))
                     # play the sound
                     playit(r"alarm-clock-elapsed.wav")
-                    # remove current alarm from the task_list
-                    done_alarm = self.task_list.pop(0)
-                    print("alarm is done {}".format(done_alarm))
+                    # remove current alarm from the original task_list
+                    self.bzoinq_obj.remove_task(current_id)
+                    print("alarm is done {}".format(current_desc))
 
 
 # help function
