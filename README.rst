@@ -4,18 +4,23 @@ bzoinq
 
 
 .. image:: https://img.shields.io/pypi/v/bzoinq.svg
-        :target: https://pypi.python.org/pypi/bzoinq
+      :target: https://pypi.python.org/pypi/bzoinq
+      :alt: Pypi
+
 
 .. image:: https://img.shields.io/travis/lapisdecor/bzoinq.svg
-        :target: https://travis-ci.org/lapisdecor/bzoinq
+      :target: https://travis-ci.org/lapisdecor/bzoinq
+      :alt: Travis CI
+
 
 .. image:: https://readthedocs.org/projects/bzoinq/badge/?version=latest
-        :target: https://bzoinq.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
+      :target: https://bzoinq.readthedocs.io/en/latest/?badge=latest
+      :alt: Documentation Status
+
 
 .. image:: https://pyup.io/repos/github/lapisdecor/bzoinq/shield.svg
-     :target: https://pyup.io/repos/github/lapisdecor/bzoinq/
-     :alt: Updates
+      :target: https://pyup.io/repos/github/lapisdecor/bzoinq/
+      :alt: Updates
 
 
 Simple calendar alarms

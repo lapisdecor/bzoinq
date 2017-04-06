@@ -10,11 +10,12 @@ Dependencies
 This package has only been tested on Ubuntu Linux. In order for the sounds
 to work you must install the pyaudio dependencies.
 
-sudo apt install portaudio19-dev python-all-dev python-pyaudio python3-pyaudio
+.. code-block:: console
+
+    $ sudo apt install portaudio19-dev python-all-dev python-pyaudio python3-pyaudio
+
+
 Stable release
-
-
-How to install
 --------------
 
 To install bzoinq, run this command in your terminal:
