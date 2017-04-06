@@ -44,7 +44,8 @@ This package has only been tested on Ubuntu Linux. In order for the sounds
 to work you must install the pyaudio dependencies.
 
 .. code-block:: console
-sudo apt install portaudio19-dev python-all-dev python-pyaudio python3-pyaudio
+
+    $ sudo apt install portaudio19-dev python-all-dev python-pyaudio python3-pyaudio
 
 Credits
 ---------
