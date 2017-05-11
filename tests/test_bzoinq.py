@@ -73,3 +73,16 @@ def test_monitor_again():
     a.create_task("Second task to test the Monitor")
     time.sleep(3)
     b.stop()
+
+
+def testfunction():
+    def printme():
+        print("function run ok")
+
+    import time
+    a = bzoinq.Bzoinq()
+    b = bzoinq.Monitor(a)
+    b.start()
+    a.create_task("Testing a function", function=printme)
+    time.sleep(2)
+    b.stop()

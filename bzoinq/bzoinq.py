@@ -15,10 +15,11 @@ import threading
 @total_ordering
 class Task():
     """Defines tasks, their representation and ordering."""
-    def __init__(self, id, description, alarm):
+    def __init__(self, id, description, alarm, function):
         self.id = id
         self.description = description
         self.alarm = alarm
+        self.function = function
 
     def __repr__(self):
         return '{}: {} {} {}'.format(self.__class__.__name__,
@@ -63,12 +64,12 @@ class Bzoinq():
         return '{}'.format(self.task_list)
 
     def create_task(self, description="Sample task",
-                    alarm=datetime.datetime.now()):
+                    alarm=datetime.datetime.now(), function=None):
         """Creates a new task"""
         assert type(alarm) is datetime.datetime
         self.task_id += 1
         # create the task
-        new_task = Task(self.task_id, description, alarm)
+        new_task = Task(self.task_id, description, alarm, function)
         # add task to task list
         self.task_list.append(new_task)
         # sort the task list
@@ -155,8 +156,11 @@ class Monitor():
                     current_id = task_list[0].id
                     current_desc = task_list[0].description
                     print("executing alarm: {}".format(task_list[0].alarm))
-                    # play the sound
-                    playit(r"alarm-clock-elapsed.wav")
+                    # play the sound if function is None
+                    if task_list[0].function is None:
+                        playit(r"alarm-clock-elapsed.wav")
+                    else:
+                        task_list[0].function()
                     # remove current alarm from the original task_list
                     self.bzoinq_obj.remove_task(current_id)
                     print("alarm is done {}".format(current_desc))
