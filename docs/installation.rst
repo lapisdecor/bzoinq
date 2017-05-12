@@ -22,7 +22,7 @@ To install bzoinq, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install bzoinq
+    $ pip3 install bzoinq
 
 This is the preferred method to install bzoinq, as it will always install the most recent stable release.
 

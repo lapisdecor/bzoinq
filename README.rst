@@ -23,9 +23,8 @@ bzoinq
       :alt: Updates
 
 
-Simple calendar alarms
+Run a task and/or play a sound alarm at a given datetime
 
-This project is currently in experimental development
 
 
 * Free software: MIT license
@@ -35,13 +34,19 @@ This project is currently in experimental development
 Features
 --------
 
-* Plays a sound on given datetime(s)
+* Create tasks that run functions and/or play a sound alarm
+* Bzoinq object is like a task list
+* Monitor object has it's own thread and watches for new tasks and sorts tasks
+according to task alarm time
+* Tasks will load automatically when you start your program but you must save
+ your tasks when you exit.
+
 
 Dependencies
 ------------
 
 This package has only been tested on Ubuntu Linux. In order for the sounds
-to work you must install the pyaudio dependencies.
+to work you must install the Linux pyaudio dependencies.
 
 .. code-block:: console
 
