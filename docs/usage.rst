@@ -32,3 +32,20 @@ To use bzoinq in a project::
 
     # this saves the tasks in a file that will be loaded when monitor is started
     a.save_tasks()
+
+    You are not limited to sounds, you can run any function at a given datetime.
+
+    # define a function
+    def f():
+        print("Function running")
+
+    # define a datetime
+    my_date = datetime.datetime(2017, 05, 12, 12, 00, 00)
+
+    # create a task that stores the function, this one has no sound
+    a.create_task("My Function", alarm=my_date, sound=False, function=f)
+
+    at the given datetime the function will run.
+
+    If you need to shut down the computer, remember to save tasks with a.save_tasks().
+    The saved file will be deleted after it's loaded when you start the program again.
