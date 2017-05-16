@@ -23,7 +23,7 @@ bzoinq
       :alt: Updates
 
 
-Run a task and/or play a sound alarm at a given datetime
+Run tasks and/or play sound alarms at a given datetime
 
 
 
