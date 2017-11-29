@@ -23,7 +23,7 @@ bzoinq
       :alt: Updates
 
 
-Run a task and/or play a sound alarm at a given datetime
+Run tasks and/or play sound alarms at a given datetime
 
 
 
@@ -36,10 +36,8 @@ Features
 
 * Create tasks that run functions and/or play a sound alarm
 * Bzoinq object is like a task list
-* Monitor object has it's own thread and watches for new tasks and sorts tasks
-according to task alarm time
-* Tasks will load automatically when you start your program but you must save
- your tasks when you exit.
+* Monitor object has it's own thread and watches for new tasks and sorts tasks according to task alarm time
+* Tasks will load automatically when you start your program but you must save your tasks when you exit.
 
 
 Dependencies
