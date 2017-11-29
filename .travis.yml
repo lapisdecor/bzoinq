@@ -4,9 +4,10 @@ language: python
 python: 3.5
 
 env:
+  - TOXENV=py36
   - TOXENV=py35
-  - TOXENV=py34
-  - TOXENV=py33
+#  - TOXENV=py34
+#  - TOXENV=py33
 
 # before_script:
 #  - sudo apt install portaudio19-dev
