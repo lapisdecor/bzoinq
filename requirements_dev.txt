@@ -8,5 +8,5 @@ coverage==4.5.2
 Sphinx==1.8.2
 cryptography==2.4.2
 PyYAML==4.2b4
-pytest==4.0.1
+pytest==4.0.2
 pyaudio==0.2.11
