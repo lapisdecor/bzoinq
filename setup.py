@@ -9,18 +9,14 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = [
-    "pyaudio"
-]
+requirements = []
 
-test_requirements = [
-    "pyaudio"
-]
+test_requirements = []
 
 setup(
     name='bzoinq',
-    version='0.1.4',
-    description="Simple calendar alarms",
+    version='0.1.5',
+    description="Play a sound or run a function at some datetime",
     long_description=readme + '\n\n' + history,
     author="Luis Louro",
     author_email='lapisdecor@gmail.com',
@@ -43,6 +39,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
     test_suite='tests',
     tests_require=test_requirements

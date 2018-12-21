@@ -18,8 +18,8 @@ bzoinq
 
 
 .. image:: https://pyup.io/repos/github/lapisdecor/bzoinq/shield.svg
-      :target: https://pyup.io/repos/github/lapisdecor/bzoinq/
-      :alt: Updates
+   :target: https://pyup.io/repos/github/lapisdecor/bzoinq/
+   :alt: Updates
 
 
 Run tasks and/or play sound alarms at a given datetime
