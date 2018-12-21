@@ -83,7 +83,7 @@ class Bzoinq():
             if task.id == id_to_remove:
                 try:
                     self.task_list.remove(task)
-                except:
+                except Exception:
                     print("couldn't remove task")
 
     def remove_all_tasks(self):
