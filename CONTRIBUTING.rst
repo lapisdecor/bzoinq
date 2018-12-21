@@ -62,7 +62,7 @@ Ready to contribute? Here's how to set up `bzoinq` for local development.
 1. Fork the `bzoinq` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/bzoinq.git
+    $ git clone git@github.com:lapisdecor/bzoinq.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenv installed, this is how you set up your fork for local development::
 
