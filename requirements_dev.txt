@@ -7,4 +7,4 @@ tox==3.7.0
 coverage==4.5.2
 Sphinx==1.8.4
 PyYAML==4.2b4
-pytest==4.2.0
+pytest==4.3.0
