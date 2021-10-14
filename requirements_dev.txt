@@ -5,5 +5,5 @@ flake8==4.0.1
 Sphinx==4.2.0
 tox==3.24.4
 coverage==6.0.2
-PyYAML==5.4.1
+PyYAML==6.0
 pytest==6.2.5
