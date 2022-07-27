@@ -1,6 +1,6 @@
 wheel==0.37.1
 watchdog==2.1.9
-pip==22.1.2
+pip==22.2.1
 flake8==4.0.1
 Sphinx==5.0.1
 tox==3.25.1
