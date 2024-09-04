@@ -1,5 +1,5 @@
 wheel==0.44.0
-watchdog==5.0.1
+watchdog==5.0.2
 pip==24.2
 flake8==7.1.0
 Sphinx==8.0.2
