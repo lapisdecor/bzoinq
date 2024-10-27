@@ -4,6 +4,6 @@ pip==24.2
 flake8==7.1.0
 Sphinx==8.1.3
 tox==4.20.0
-coverage==7.6.1
+coverage==7.6.4
 PyYAML==6.0.1
 pytest==8.3.3
